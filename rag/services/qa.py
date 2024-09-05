@@ -46,3 +46,4 @@ class QAService:
         )
         
         return response.choices[0].message.content
+

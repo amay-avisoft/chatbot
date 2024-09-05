@@ -10,7 +10,7 @@ from mongoengine import connect
 import os
 import uvicorn
 from dotenv import load_dotenv
-from config import settings  # Ensure this import works correctly
+from rag.config import settings# Ensure this import works correctly
 from rag.api.endpoints import router  
 
 # Load environment variables from .env file
@@ -18,9 +18,10 @@ load_dotenv()
 
 app = FastAPI(title="RAG System API")
 
+
 @app.on_event("startup")
 def startup_db_client():
-    connect(host=settings.MONGO_CONNECTION_STRING)  # Use the loaded connection string
+    connect(host=settings.MONGO_CONNECTION_STRING)
 
 app.include_router(router, prefix="/api")
 
